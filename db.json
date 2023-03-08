@@ -1,0 +1,11 @@
+{
+  "administrators": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "parents": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "teachers": [{ "name": "typicode" }],
+  "students": [{ "name": "typicode" }],
+  "grades": [{ "name": "typicode" }]
+}
