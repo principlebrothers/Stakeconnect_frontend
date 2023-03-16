@@ -12,14 +12,14 @@ export const stakeConnectApi = createApi({
       }),
       transformResponse: (response, meta) => {
         const token = meta.response.headers.get('Authorization');
-        return {token, ...response.status};
+        return { token, ...response.status };
       },
     }),
     getAdministrators: builder.query({
       query: () => 'administrators',
     }),
     signOutAdministrator: builder.mutation({
-      query: ({body, headers}) => ({
+      query: ({ body, headers }) => ({
         url: 'administrators/sign_out',
         method: 'DELETE',
         body,
@@ -32,5 +32,5 @@ export const stakeConnectApi = createApi({
 export const {
   useSignInAdministratorMutation,
   useGetAdministratorsQuery,
-  useSignOutAdministratorMutation
+  useSignOutAdministratorMutation,
 } = stakeConnectApi;

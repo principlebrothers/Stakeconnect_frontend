@@ -5,8 +5,7 @@ import { setToken } from '../utilities/Utilities';
 
 function Login() {
   const navigate = useNavigate();
-  const [signInAdministrator, { isLoading, error }] =
-    useSignInAdministratorMutation();
+  const [signInAdministrator, { isLoading, error }] = useSignInAdministratorMutation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,14 +17,18 @@ function Login() {
         administrator: { email: trimmedEmail, password },
       })
         .unwrap()
-        .catch((error) => console.log(error));
+        .catch((error) => error.message);
 
       if (response) {
         const { token, data } = response;
         setToken(token);
-        data.role === 'admin' && navigate('/admin', {state: data});
-        data.role === 'teacher' && navigate('/teacher', {state: data});
-        data.role === 'parent' && navigate('/parent', {state: data});
+        if (data.role === 'admin') {
+          navigate('/admin', { state: data });
+        } else if (data.role === 'teacher') {
+          navigate('/teacher', { state: data });
+        } else if (data.role === 'parent') {
+          navigate('/parent', { state: data });
+        }
       }
       setEmail('');
       setPassword('');
@@ -44,24 +47,29 @@ function Login() {
     <div>
       <form onSubmit={handleSubmit}>
         <input
-          type='email'
-          placeholder='Email'
+          type="email"
+          placeholder="Email"
           required
           onChange={handleEmail}
           value={email}
         />
         <input
-          type='password'
-          placeholder='Password'
+          type="password"
+          placeholder="Password"
           required
           onChange={handlePassword}
           value={password}
         />
-        <button type='submit' disabled={isLoading}>
+        <button type="submit" disabled={isLoading}>
           {isLoading ? 'Logging in...' : 'Login'}
         </button>
       </form>
-      {error && <div>Failed to log in: {error.message}</div>}
+      {error && (
+      <div>
+        Failed to log in:
+        {error.message}
+      </div>
+      )}
     </div>
   );
 }

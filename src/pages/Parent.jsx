@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 function Parent() {
   return (
     <div>Parent</div>
-  )
+  );
 }
 
 export default Parent;
