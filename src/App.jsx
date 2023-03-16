@@ -1,7 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/home/Home';
-import Error from './pages/error/Error';
+import Home from './components/home/Home';
+import Error from './components/error/Error';
+import Login from './components/login/Login';
+import Admin from './pages/Admin';
+import Teacher from './pages/Teacher';
+import Parent from './pages/Parent';
 import './App.css';
 
 function App() {
@@ -9,7 +13,10 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/teacher" element={<Teacher />} />
+          <Route path="/parent" element={<Parent />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
