@@ -5,6 +5,7 @@ import Login from './components/login/Login';
 import Admin from './pages/Admin';
 import Teacher from './pages/Teacher';
 import Parent from './pages/Parent';
+import Coverpage from './pages/Coverpage';
 import './App.css';
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Coverpage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/teacher" element={<Teacher />} />
           <Route path="/parent" element={<Parent />} />
