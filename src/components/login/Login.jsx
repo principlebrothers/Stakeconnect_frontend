@@ -2,12 +2,16 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSignInAdministratorMutation } from '../api/apiSlice';
 import { setToken } from '../utilities/Utilities';
+import styles from './Login.module.css';
+import login from '../../assets/login.jpg';
+import Modal from '../reuseable/model/Modal';
 
 function Login() {
   const navigate = useNavigate();
-  const [signInAdministrator, { isLoading, error }] = useSignInAdministratorMutation();
+  const [signInAdministrator, { isLoading }] = useSignInAdministratorMutation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [modal, setModal] = useState({ isError: false, message: '', type: '' });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +21,7 @@ function Login() {
         administrator: { email: trimmedEmail, password },
       })
         .unwrap()
-        .catch((error) => error.message);
+        .catch((error) => setModal({ isError: true, message: error.data, type: 'error' }));
 
       if (response) {
         const { token, data } = response;
@@ -44,33 +48,48 @@ function Login() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          onChange={handleEmail}
-          value={email}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          onChange={handlePassword}
-          value={password}
-        />
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Logging in...' : 'Login'}
-        </button>
-      </form>
-      {error && (
-      <div>
-        Failed to log in:
-        {error.message}
+    <section className={styles.background}>
+      <div className={styles.login__container}>
+        <div className={styles.left_side}>
+          <img src={login} alt="login" width="1024px" height="844px" />
+        </div>
+        <div className={styles.right__side}>
+          <h2 className="large__font__size__bold">You&apos;re Welcome!</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="email"
+              placeholder="Email"
+              required
+              onChange={handleEmail}
+              value={email}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              required
+              onChange={handlePassword}
+              value={password}
+            />
+            <button
+              type="submit"
+              className="general__button"
+              disabled={isLoading}
+            >
+              {isLoading ? 'Logging in...' : 'Login'}
+            </button>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <a href="#">Forgot password</a>
+          </form>
+          {modal.isError && (
+            <Modal
+              message={modal.message}
+              type={modal.type}
+              onClose={() => setModal({ isError: false, message: '', type: '' })}
+            />
+          )}
+        </div>
       </div>
-      )}
-    </div>
+    </section>
   );
 }
 
