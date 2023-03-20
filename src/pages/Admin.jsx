@@ -13,7 +13,7 @@ function Admin() {
       .unwrap()
       .then(() => {
         clearToken();
-        navigate('/');
+        navigate('/login');
       })
       .catch((error) => error.message);
   };
