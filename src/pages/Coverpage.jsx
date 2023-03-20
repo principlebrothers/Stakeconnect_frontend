@@ -11,9 +11,9 @@ function Coverpage() {
   };
 
   return (
-    <section className="center_content outer__gap">
+    <section className="center__content outer__gap">
       <div className="logo__container">
-        <img src={StClogo} alt="logo" />
+        <img src={StClogo} alt="logo" width="200px" height="135px" />
       </div>
       <h1 className="center__text app__name">
         Stake Connect School Management
