@@ -26,6 +26,18 @@ export const stakeConnectApi = createApi({
         headers,
       }),
     }),
+    getGrades: builder.query({
+      query: () => 'grades',
+    }),
+    getEvents: builder.query({
+      query: () => 'events',
+    }),
+    getStudents: builder.query({
+      query: () => 'students',
+    }),
+    getCourses: builder.query({
+      query: () => 'courses',
+    }),
   }),
 });
 
@@ -33,4 +45,8 @@ export const {
   useSignInAdministratorMutation,
   useGetAdministratorsQuery,
   useSignOutAdministratorMutation,
+  useGetGradesQuery,
+  useGetEventsQuery,
+  useGetStudentsQuery,
+  useGetCoursesQuery,
 } = stakeConnectApi;
