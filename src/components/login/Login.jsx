@@ -21,7 +21,9 @@ function Login() {
         administrator: { email: trimmedEmail, password },
       })
         .unwrap()
-        .catch((error) => setModal({ isError: true, message: error.data, type: 'error' }));
+        .catch((error) =>
+          setModal({ isError: true, message: error.data, type: 'error' })
+        );
 
       if (response) {
         const { token, data } = response;
@@ -51,40 +53,42 @@ function Login() {
     <section className={styles.background}>
       <div className={styles.login__container}>
         <div className={styles.left_side}>
-          <img src={login} alt="login" width="1024px" height="844px" />
+          <img src={login} alt='login' width='1024px' height='844px' />
         </div>
         <div className={styles.right__side}>
-          <h2 className="large__font__size__bold">You&apos;re Welcome!</h2>
+          <h2 className='large__font__size__bold'>You&apos;re Welcome!</h2>
           <form onSubmit={handleSubmit}>
             <input
-              type="email"
-              placeholder="Email"
+              type='email'
+              placeholder='Email'
               required
               onChange={handleEmail}
               value={email}
             />
             <input
-              type="password"
-              placeholder="Password"
+              type='password'
+              placeholder='Password'
               required
               onChange={handlePassword}
               value={password}
             />
             <button
-              type="submit"
-              className="general__button"
+              type='submit'
+              className='general__button'
               disabled={isLoading}
             >
               {isLoading ? 'Logging in...' : 'Login'}
             </button>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a href="#">Forgot password</a>
+            <a href='#'>Forgot password</a>
           </form>
           {modal.isError && (
             <Modal
               message={modal.message}
               type={modal.type}
-              onClose={() => setModal({ isError: false, message: '', type: '' })}
+              onClose={() =>
+                setModal({ isError: false, message: '', type: '' })
+              }
             />
           )}
         </div>
