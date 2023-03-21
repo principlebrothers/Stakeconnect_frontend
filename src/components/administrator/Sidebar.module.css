@@ -1,0 +1,34 @@
+.side__menu{
+  position:fixed;
+  width: 20vw;
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+.logo__container {
+  height: 10vh;
+}
+
+.logo__icon {
+  margin-right: 10px;
+}
+
+.side__menu li {
+  display: flex;
+  padding: 10px 40px;
+}
+
+.side__menu li a {
+  color: var(--primary-color);
+  align-items: center;
+  gap: 10px;
+}
+
+.side__menu li:hover{
+  background-color: var(--primary-color);
+}
+
+.side__menu li:hover a{
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
