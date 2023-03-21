@@ -1,45 +1,25 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useSignOutAdministratorMutation } from '../components/api/apiSlice';
-import { getToken, clearToken } from '../components/utilities/Utilities';
+import { useLocation } from 'react-router-dom';
+import Header from '../components/administrator/Header';
+import Sidebar from '../components/administrator/Sidebar';
 
 function Admin() {
-  const navigate = useNavigate();
   const location = useLocation();
-  const [signOutAdministrator, { isLoading, error }] = useSignOutAdministratorMutation();
-
-  const handleSignOut = async () => {
-    const token = getToken();
-    await signOutAdministrator({ headers: { Authorization: token } })
-      .unwrap()
-      .then(() => {
-        clearToken();
-        navigate('/login');
-      })
-      .catch((error) => error.message);
-  };
   const {
-    name, image, email, role,
-  } = location?.state;
+    name = '',
+    image = '',
+    email = '',
+    role = '',
+  } = location?.state || {};
 
   return (
     <>
-      <div>
-        <div>{`Welcome, ${name}`}</div>
-        <>
-          <div>{email}</div>
-          <div>{image}</div>
-          <div>{role}</div>
-        </>
-      </div>
-      <button type="button" disabled={isLoading} onClick={handleSignOut}>
-        {isLoading ? 'Signing out...' : 'Sign out'}
-      </button>
-      {error && (
-      <div>
-        Failed to sign out:
-        {error.message}
-      </div>
-      )}
+      <Sidebar />
+      <Header
+        name={name}
+        email={email}
+        image={image}
+        role={role}
+      />
     </>
   );
 }
