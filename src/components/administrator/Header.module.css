@@ -5,34 +5,46 @@
   height: 10vh;
   background-color: whitesmoke;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 5rem;
+  padding: 0.5rem;
   box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
+.search {
+  display: flex;
+  align-items: center;
+  /* position: relative; */
+}
+
 input[type="text"] {
+  flex: 1;
   border: none;
   border-radius: 15px 0 0 15px;
   padding: 10px;
-  min-width: 350px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .search button {
+  /* position: absolute; */
+  /* right: 0;
   border: none;
   border-radius: 0;
   padding: 10px;
   background-color: var(--primary-color);
   color: var(--text-color);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2); */
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-left: 10px;
 }
 
 .search button:active {
   background-color: var(--background-color);
 }
 
-.search button:active .search__icon{
+.search button:active .search__icon {
   color: var(--primary-color);
 }
 
@@ -50,7 +62,7 @@ input[type="text"] {
 }
 
 
-.notice{
+.notice {
   font-size: clamp(1.5rem, 1.5vw, 2rem);
   font-weight: 900;
   color: var(--text-color);
@@ -64,10 +76,10 @@ input[type="text"] {
 
 .user__info {
   position: absolute;
-  top: 100%;
+  top: 110%;
   right: 0;
   min-width: 200px;
-  margin-right: 15px;
+  margin-right: 6px;
   padding: 5px;
   background-color: rgba(0, 0, 0, 0.2);
   display: none;
@@ -84,5 +96,167 @@ input[type="text"] {
 
 
 @media screen and (max-width: 768px) {
+  .navbar {
+    width: 100vw;
+    height: 10vh;
+    justify-content: space-between;
+  }
 
 }
+
+/*.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 20vw;
+  width: 80vw;
+  height: 60px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.search__icon {
+  font-size: 22px;
+  color: #999;
+}
+
+.user__details {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.notice {
+  font-size: 22px;
+  margin-right: 10px;
+  color: #999;
+}
+
+.img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user__info {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.user__details:hover .user__info {
+  display: block;
+}
+
+.user__info div {
+  margin-bottom: 5px;
+  font-size: 14px;
+
+  ----------------------------------------------------------------------------------
+  .navbar {
+      position: fixed;
+      top: 0;
+      left: 20vw;
+      width: calc(80vw - 40px);
+      height: 70px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 999;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      background-color: #F4F4F4;
+      font-size: 16px;
+      color: #444444;
+    }
+
+    button[type="submit"] {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .search__icon {
+      font-size: 20px;
+      color: #444444;
+    }
+
+    .user__details {
+      display: flex;
+      align-items: center;
+    }
+
+    .notice {
+      font-size: 24px;
+      margin-right: 20px;
+      color: #444444;
+    }
+
+    .img {
+      border-radius: 50%;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .user__info {
+      display: none;
+      position: absolute;
+      top: 70px;
+      right: 10px;
+      background-color: #ffffff;
+      border: 1px solid #EAEAEA;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .user__info div {
+      margin-bottom: 5px;
+    }
+
+    .user__details:hover .user__info {
+      display: block;
+    }
+}*/
