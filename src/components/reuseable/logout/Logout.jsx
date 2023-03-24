@@ -1,26 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSignOutAdministratorMutation } from '../../api/apiSlice';
-import { getToken, clearToken } from '../../utilities/Utilities';
+import { useLogOut } from '../../utilities/Utilities';
 
 import { IoLogOutOutline } from 'react-icons/io5';
 import styles from './Logout.module.css';
 
 function Logout() {
-  const navigate = useNavigate();
-  const [signOutAdministrator, { isLoading }] =
-    useSignOutAdministratorMutation();
-
-  const handleLogOut = async () => {
-    const token = getToken();
-    await signOutAdministrator({ headers: { Authorization: token } })
-      .unwrap()
-      .then(() => {
-        clearToken();
-        navigate('/login');
-      })
-      .catch((error) => error.message);
-  };
+  const { handleLogOut, isLoading } = useLogOut();
 
   return (
     <button
