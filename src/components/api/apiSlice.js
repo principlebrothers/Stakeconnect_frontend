@@ -2,7 +2,10 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const stakeConnectApi = createApi({
   reducerPath: 'stakeHolders',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:3000/' }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://127.0.0.1:3000/',
+    credentials: 'include',
+  }),
   endpoints: (builder) => ({
     signInAdministrator: builder.mutation({
       query: (body) => ({
@@ -27,7 +30,12 @@ export const stakeConnectApi = createApi({
       }),
     }),
     getGrades: builder.query({
-      query: () => 'grades',
+      query: (headers) => ({
+        url: 'grades',
+        headers: {
+          Authorization: headers.Authorization,
+        },
+      }),
     }),
     getEvents: builder.query({
       query: () => 'events',
