@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSignInAdministratorMutation } from '../api/apiSlice';
-import { setToken } from '../utilities/Utilities';
+import { setToken, useLogOut } from '../utilities/Utilities';
 import styles from './Login.module.css';
 import login from '../../assets/login.jpg';
 import Modal from '../reuseable/model/Modal';
@@ -12,6 +12,13 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [modal, setModal] = useState({ isError: false, message: '', type: '' });
+  const { handleLogOut } = useLogOut();
+
+  const timeout = () => {
+    setTimeout(() => {
+      handleLogOut();
+    }, 7140000);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +29,7 @@ function Login() {
       })
         .unwrap()
         .catch((error) =>
-          setModal({ isError: true, message: error.data, type: 'error' })
+          setModal({ isError: true, message: error.error, type: 'error' })
         );
 
       if (response) {
@@ -38,6 +45,7 @@ function Login() {
       }
       setEmail('');
       setPassword('');
+      timeout();
     }
   };
 
