@@ -100,6 +100,10 @@
   padding: 1rem;
 }
 
+.inner__gap {
+  padding: 0.3rem;
+}
+
 .text__with__radius {
   font-weight: 700;
   padding: 0.2rem 0.5rem;
