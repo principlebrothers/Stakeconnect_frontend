@@ -3,6 +3,7 @@
   width: 20vw;
   min-height: 100vh;
   background-color: var(--background-color);
+  border-top-right-radius: 40px;
 }
 
 .logo__container {
