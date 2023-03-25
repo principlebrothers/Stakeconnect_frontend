@@ -196,3 +196,11 @@
     transform: translate(0, 0);
   }
 }
+
+.active {
+  background-color: var(--primary-color);
+}
+
+.text__color {
+  color: var(--text-color);
+}
