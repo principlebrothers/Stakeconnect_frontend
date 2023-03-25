@@ -6,7 +6,7 @@ import { icons } from '../utilities/Utilities';
 import styles from './Sidebar.module.css';
 
 function Sidebar() {
-
+  
   return (
     <>
       <aside className={styles.side__menu}>
@@ -17,12 +17,12 @@ function Sidebar() {
         <div className='menu__container'>
           <ul>
             {menus.map((menu, index) => (
-              <li key={menu}>
-                <Link to={`/${menu}`} className='flex small__font__size__bold'>
+              <li key={menu.id}>
+                <Link to={menu.path} className='flex small__font__size__bold'>
                   {React.createElement(icons[index], {
                     className: styles.icon,
                   })}
-                  {menu}
+                  {menu.page}
                 </Link>
               </li>
             ))}
