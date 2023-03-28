@@ -3,13 +3,14 @@
   top: 0;
   left: 20vw;
   width: 80vw;
-  height: 70px;
+  height: 10vh;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--primary-color);
   padding: 0 20px;
-  z-index: 999;
+  z-index: 20;
 }
 
 .search {
@@ -55,6 +56,10 @@
   color: var(--deep-gray);
 }
 
+.user__details__container {
+  position: relative;
+}
+
 .img {
   border-radius: 50%;
   margin-right: 10px;
@@ -64,9 +69,10 @@
 .user__info {
   display: none;
   position: absolute;
-  top: 70px;
+  top: 50px;
   right: 10px;
   border: 1px solid #eaeaea;
+  background-color: #bdb9b9;
   border-radius: 10px;
   padding: 10px;
 }
@@ -75,7 +81,11 @@
   margin-bottom: 5px;
 }
 
-.user__details:hover .user__info {
+.user__details__container:active .user__info {
+  display: block;
+}
+
+.user__info.active {
   display: block;
 }
 
@@ -83,6 +93,7 @@
   .navbar {
     position: fixed;
     left: 0;
+    height: 70px;
     width: 100vw;
     gap: 10px;
     padding: 0 7px;
