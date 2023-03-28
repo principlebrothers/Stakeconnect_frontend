@@ -80,6 +80,10 @@
   align-items: center;
 }
 
+.space__between {
+  justify-content: space-between;
+}
+
 .backdrop {
   background: rgba(0, 0, 0, 0.7);
   -webkit-backdrop-filter: blur(3rem);
@@ -103,6 +107,14 @@
 
 .inner__gap {
   padding: 0.3rem;
+}
+
+.margin__right {
+  margin-right: 0.5rem;
+}
+
+.wrap {
+  flex-wrap: wrap;
 }
 
 .text__with__radius {
@@ -152,10 +164,19 @@
   margin: 1rem 0;
 }
 
+.small__vertical__gap {
+  margin: 0.5rem 0;
+}
+
 .app__name {
   font-size: clamp(2rem, 1.5vw, 2.5rem);
   font-weight: 900;
   color: var(--text-color);
+}
+
+.sub__text {
+  color: var(--background-color);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
 }
 
 .general__button {
